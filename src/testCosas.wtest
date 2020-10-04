@@ -1,7 +1,59 @@
 import camion.*
+import cosas.*
 
-test "testX" {
-
-	assert.that(true)
-
+describe "test de cosas" {
+	
+	test "paquete de 950 ladrillos" {
+		paqueteDeLadrillos.cantidadLadrillos(950)
+		
+		assert.equals(10, paqueteDeLadrillos.cantidadRefuerzos())
+		assert.equals(2000, paqueteDeLadrillos.peso())
+		assert.equals(40, paqueteDeLadrillos.nivelPeligrosidad())
+	}
+	
+	test "paquete de 1020 ladrillos" {
+		paqueteDeLadrillos.cantidadLadrillos(1020)
+		
+		assert.equals(21, paqueteDeLadrillos.cantidadRefuerzos())
+		assert.equals(2250, paqueteDeLadrillos.peso())
+		assert.equals(29, paqueteDeLadrillos.nivelPeligrosidad())
+	}
+	
+	test "bateria antiaerea sin misiles" {
+		bateriaAntiaerea.poseeMisiles(false)
+		
+		assert.equals(200, bateriaAntiaerea.peso())
+		assert.equals(0, bateriaAntiaerea.nivelPeligrosidad())
+	}
+	
+	test "bateria antiaerea con misiles" {
+		bateriaAntiaerea.poseeMisiles(true)
+		
+		assert.equals(300, bateriaAntiaerea.peso())
+		assert.equals(100, bateriaAntiaerea.nivelPeligrosidad())
+	}
+	
+	test "contenedor portuario" {
+		contenedorPortuario.agregar(bumblebee)
+		contenedorPortuario.agregar(knightRider)
+		
+		assert.equals(1400, contenedorPortuario.peso())
+		assert.equals(15, contenedorPortuario.nivelPeligrosidad())
+	}
+	
+	test "embalaje de seguridad" {
+		embalajeDeSeguridad.cosaEmbalada(knightRider)
+		
+		assert.equals(500, embalajeDeSeguridad.peso())
+		assert.equals(5, embalajeDeSeguridad.nivelPeligrosidad())
+	}
 }
+
+
+
+
+
+
+
+
+

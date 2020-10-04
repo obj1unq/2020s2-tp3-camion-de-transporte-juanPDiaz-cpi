@@ -54,6 +54,14 @@ object camion {
 	method puedeCircularEnRuta(nivelMaximo) {
 		return cosas.all({ cosa => cosa.nivelPeligrosidad() < nivelMaximo })
 	}
+	
+	method tieneAlgoQuePesaEntre(min, max) {
+		return cosas.any({ cosa => cosa.peso().between(min, max) })
+	}
+	
+	method cosaMasPesada() {
+		return cosas.max({ cosa => cosa.peso() })
+	}
 }
 
 

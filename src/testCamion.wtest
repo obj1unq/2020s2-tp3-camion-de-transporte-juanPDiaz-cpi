@@ -51,4 +51,26 @@ describe "tests del camión" {
 		assert.that(camion.puedeCircularEnRuta(12))
 		assert.notThat(camion.puedeCircularEnRuta(5))
 	}
+	
+	test "algo que pesa entre 100 y 1000" {
+		camion.cargar(bumblebee)
+		
+		assert.that(camion.tieneAlgoQuePesaEntre(700, 900))
+		assert.notThat(camion.tieneAlgoQuePesaEntre(3000, 3100))
+	}
+	
+	test "cosa más pesada" {
+		camion.cargar(bumblebee)
+		camion.cargar(knightRider)
+		
+		assert.equals(camion.cosaMasPesada(), bumblebee)
+	}
 }
+
+
+
+
+
+
+
+
