@@ -24,16 +24,36 @@ object cosaDePesoVariable {
 
 object paqueteDeLadrillos {
 	var property cantidadLadrillos = 0
+	//var property cantidadRefuerzos = 0
+	
+	/*
+	method cantidadLadrillos(cantidad){
+		cantidadLadrillos = cantidad
+		
+		if (cantidad <= 1000) {
+			cantidadRefuerzos = (cantidad / 100).roundUp()
+		} else {
+			cantidadRefuerzos = (cantidad / 50).roundUp()
+		}
+	}
+	*/
 	
 	method cantidadRefuerzos() {
-		const divisor = if(cantidadLadrillos <= 1000) 100 else 50
+		//const divisor = if(cantidadLadrillos <= 1000) 100 else 50
 		
-		return (cantidadLadrillos / divisor).roundUp()
+		return (cantidadLadrillos / self.divisor()).roundUp()
+
+		/*return if(cantidadLadrillos <= 1000) {
+			(cantidadLadrillos / 100).roundUp()
+		} else {
+			(cantidadLadrillos / 50).roundUp()
+		}*/
 	}
 	
-	/*method divisor() {
+	method divisor() {
 		return if(cantidadLadrillos <= 1000) 100 else 50
-	}*/
+	}
+	
 	
 	method peso() {
 		return self.pesoLadrillos() + self.pesoRefuerzos()
@@ -118,14 +138,7 @@ object contenedorPortuario {
 	}
 	
 	method sacar(cosa) {
-		self.validarSacar(cosa)
 		cosasGuardadas.remove(cosa)
-	}
-	
-	method validarSacar(cosa) {
-		if(!cosasGuardadas.contains(cosa)) {
-			self.error("No se puede sacar algo que no está guardado")
-		}
 	}
 	
 	method nivelPeligrosidad() {
