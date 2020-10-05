@@ -62,6 +62,14 @@ object camion {
 	method cosaMasPesada() {
 		return cosas.max({ cosa => cosa.peso() })
 	}
+	
+	method totalBultos() {
+		return cosas.sum({ cosa => cosa.bulto() })
+	}
+	
+	method pesos() {
+		return cosas.map({ cosa => cosa.peso() })
+	}
 }
 
 

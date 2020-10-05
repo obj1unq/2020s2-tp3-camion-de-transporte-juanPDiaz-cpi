@@ -65,6 +65,20 @@ describe "tests del camión" {
 		
 		assert.equals(camion.cosaMasPesada(), bumblebee)
 	}
+	
+	test "total bultos" {
+		camion.cargar(bumblebee)
+		camion.cargar(knightRider)
+		
+		assert.equals(3, camion.totalBultos())
+	}
+	
+	test "total pesos" {
+		camion.cargar(bumblebee)
+		camion.cargar(knightRider)
+		
+		assert.equals([800, 500], camion.pesos())
+	}
 }
 
 
