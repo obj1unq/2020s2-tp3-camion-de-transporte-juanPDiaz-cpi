@@ -1,16 +1,17 @@
  import camion.*
  import cosas.*
+ import objetosDePrueba.*
  
 describe "tests del camión" {
 	
 	test "carga exitosa" {
 		camion.cargar(knightRider)
-		assert.that(camion.posee(knightRider))					// Preguntarle a Leo.
+		assert.that(camion.posee(knightRider))
 	}
 	
 	test "carga fallida" {
 		cosaDePesoVariable.peso(1600)
-		assert.throwsException({ camion.cargar(cosaDePesoVariable) })		// Preguntarle a Leo.
+		assert.throwsException({ camion.cargar(cosaDePesoVariable) })
 	}
 	
 	test "descarga exitosa" {
