@@ -2,6 +2,7 @@ object knightRider {
 	method peso() { return 500 }
 	method nivelPeligrosidad() { return 10 }
 	method bulto() { return 1 }
+	method seCarga() {}
 }
 
 object bumblebee {
@@ -11,6 +12,10 @@ object bumblebee {
 	method nivelPeligrosidad() { return if (transformadoEnAuto) { 15 } else { 30 }  }
 	method transformar() { transformadoEnAuto = not transformadoEnAuto }
 	method bulto() { return 2 }
+	
+	method seCarga() {							// Preguntarle a Leo
+		transformadoEnAuto = false
+	}
 }
 
 object cosaDePesoVariable {
@@ -55,6 +60,10 @@ object paqueteDeLadrillos {
 			3
 		}
 	}
+	
+	method seCarga() {
+		cantidadLadrillos = (cantidadLadrillos - 12).max(0)
+	}
 }
 
 object arenaAGranel {
@@ -62,6 +71,10 @@ object arenaAGranel {
 	
 	method nivelPeligrosidad() { return 1 }
 	method bulto() { return 1 }
+	
+	method seCarga() {
+		peso = (peso - 15).max(0)
+	}
 }
 
 object bateriaAntiaerea {
@@ -81,6 +94,10 @@ object bateriaAntiaerea {
 		} else {
 			1
 		}
+	}
+	
+	method seCarga() {
+		poseeMisiles = true
 	}
 }
 
@@ -122,6 +139,10 @@ object contenedorPortuario {
 	method bultoCosasGuardadas() {
 		return cosasGuardadas.sum({ cosa => cosa.bulto() })
 	}
+	
+	method seCarga() {
+		cosasGuardadas.forEach({ cosa => cosa.seCarga() })
+	}
 }
 
 object residuosRadioactivos {
@@ -129,10 +150,17 @@ object residuosRadioactivos {
 	
 	method nivelPeligrosidad() { return 200 }
 	method bulto() { return 1 }
+	
+	method seCarga() {
+		peso += 15
+	}
 }
 
 object embalajeDeSeguridad {
 	var property cosaEmbalada
+	
+	method bulto() { return 2 }
+	method seCarga() {}
 	
 	method peso() {
 		return cosaEmbalada.peso()
@@ -142,7 +170,6 @@ object embalajeDeSeguridad {
 		return cosaEmbalada.nivelPeligrosidad() / 2
 	}
 	
-	method bulto() { return 2 }
 }
 
 

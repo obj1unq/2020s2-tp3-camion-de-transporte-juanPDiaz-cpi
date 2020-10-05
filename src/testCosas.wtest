@@ -47,6 +47,13 @@ describe "test de cosas" {
 		assert.equals(500, embalajeDeSeguridad.peso())
 		assert.equals(5, embalajeDeSeguridad.nivelPeligrosidad())
 	}
+	
+	test "se cargan residuos radioactivos" {
+		residuosRadioactivos.peso(100)
+		camion.cargar(residuosRadioactivos)
+		
+		assert.equals(115, residuosRadioactivos.peso())
+	}
 }
 
 

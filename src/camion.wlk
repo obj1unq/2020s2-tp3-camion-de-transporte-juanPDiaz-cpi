@@ -8,6 +8,7 @@ object camion {
 	method cargar(cosa) {
 		self.validarCarga(cosa)
 		cosas.add(cosa)
+		cosa.seCarga()
 	}
 	
 	method descargar(cosa) {
