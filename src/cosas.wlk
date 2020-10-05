@@ -1,3 +1,5 @@
+import objetosDePrueba.*
+
 object knightRider {
 	method peso() { return 500 }
 	method nivelPeligrosidad() { return 10 }
@@ -18,36 +20,31 @@ object bumblebee {
 	}
 }
 
-object cosaDePesoVariable {
-	var property peso = 0
-}
-
 object paqueteDeLadrillos {
 	var property cantidadLadrillos = 0
 	//var property cantidadRefuerzos = 0
 	
-	/*
-	method cantidadLadrillos(cantidad){
-		cantidadLadrillos = cantidad
-		
-		if (cantidad <= 1000) {
-			cantidadRefuerzos = (cantidad / 100).roundUp()
-		} else {
-			cantidadRefuerzos = (cantidad / 50).roundUp()
-		}
-	}*/
+//	method cantidadLadrillos(cantidad){
+//		cantidadLadrillos = cantidad
+//		
+//		if (cantidad <= 1000) {
+//			cantidadRefuerzos = (cantidad / 100).roundUp()
+//		} else {
+//			cantidadRefuerzos = (cantidad / 50).roundUp()
+//		}
+//	}
 		
 	method cantidadRefuerzos() {
 		const divisor = if(cantidadLadrillos <= 1000) 100 else 50
 		
 		return (cantidadLadrillos / divisor).roundUp()
 
-		/*return if(cantidadLadrillos <= 1000) {
-			(cantidadLadrillos / 100).roundUp()
-		} else {
-			(cantidadLadrillos / 50).roundUp()
-		}*/
-	}	
+//		return if(cantidadLadrillos <= 1000) {
+//			(cantidadLadrillos / 100).roundUp()
+//		} else {
+//			(cantidadLadrillos / 50).roundUp()
+//		}
+	}
 	
 	method peso() {
 		return self.pesoLadrillos() + self.pesoRefuerzos()
@@ -118,7 +115,7 @@ object bateriaAntiaerea {
 
 object contenedorPortuario {
 	const pesoContenedor = 100
-	var cosasGuardadas = []
+	const cosasGuardadas = []
 	
 	method peso() {
 		return pesoContenedor + self.pesoCosasGuardadas()

@@ -4,13 +4,13 @@ object camion {
 	const property cosas = []
 	const property pesoMaximo = 2500
 	const pesoTara = 1000
-	//var pesoCarga = 0
+	//var property pesoCarga = 0
 	
 	method cargar(cosa) {
 		self.validarCarga(cosa)		
 		cosas.add(cosa)
-		cosa.seCarga()
 		//pesoCarga += cosa.peso()
+		cosa.seCarga()
 	}
 	
 	method cargarAlternativoMasFeo(cosa) {
@@ -60,9 +60,9 @@ object camion {
 		return cosas.filter({ cosa => cosa.nivelPeligrosidad() > nivel })
 	}
 	
-	/*method objetosMasPeligrososQueMalo(cosa) {
+	method objetosMasPeligrososMasFeoQue(cosa) {
 		return cosas.filter({ otraCosa => otraCosa.nivelPeligrosidad() > cosa.nivelPeligrosidad() })
-	}*/
+	}
 	
 	method objetosMasPeligrososQue(cosa) {
 		return self.objetosPeligrosos(cosa.nivelPeligrosidad())
