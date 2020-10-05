@@ -4,11 +4,22 @@ object camion {
 	const property cosas = []
 	const property pesoMaximo = 2500
 	const pesoTara = 1000
+	//var pesoCarga = 0
 	
 	method cargar(cosa) {
-		self.validarCarga(cosa)
+		self.validarCarga(cosa)		
 		cosas.add(cosa)
 		cosa.seCarga()
+		//pesoCarga += cosa.peso()
+	}
+	
+	method cargarAlternativoMasFeo(cosa) {
+		if (self.pesoTotal() + cosa.peso() <= pesoMaximo) {
+			cosas.add(cosa)
+			cosa.seCarga()
+		} else {
+			self.error("No se puede cargar más peso")
+		}
 	}
 	
 	method descargar(cosa) {
@@ -30,6 +41,7 @@ object camion {
 	
 	method pesoTotal() {
 		return pesoTara + self.pesoCosas()
+		//return pesoTara + pesoCarga
 	}
 	
 	method pesoCosas() {
@@ -47,6 +59,10 @@ object camion {
 	method objetosPeligrosos(nivel) {
 		return cosas.filter({ cosa => cosa.nivelPeligrosidad() > nivel })
 	}
+	
+	/*method objetosMasPeligrososQueMalo(cosa) {
+		return cosas.filter({ otraCosa => otraCosa.nivelPeligrosidad() > cosa.nivelPeligrosidad() })
+	}*/
 	
 	method objetosMasPeligrososQue(cosa) {
 		return self.objetosPeligrosos(cosa.nivelPeligrosidad())

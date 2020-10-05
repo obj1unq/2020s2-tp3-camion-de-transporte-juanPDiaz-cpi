@@ -13,7 +13,7 @@ object bumblebee {
 	method transformar() { transformadoEnAuto = not transformadoEnAuto }
 	method bulto() { return 2 }
 	
-	method seCarga() {							// Preguntarle a Leo
+	method seCarga() {
 		transformadoEnAuto = false
 	}
 }
@@ -35,25 +35,19 @@ object paqueteDeLadrillos {
 		} else {
 			cantidadRefuerzos = (cantidad / 50).roundUp()
 		}
-	}
-	*/
-	
-	method cantidadRefuerzos() {
-		//const divisor = if(cantidadLadrillos <= 1000) 100 else 50
+	}*/
 		
-		return (cantidadLadrillos / self.divisor()).roundUp()
+	method cantidadRefuerzos() {
+		const divisor = if(cantidadLadrillos <= 1000) 100 else 50
+		
+		return (cantidadLadrillos / divisor).roundUp()
 
 		/*return if(cantidadLadrillos <= 1000) {
 			(cantidadLadrillos / 100).roundUp()
 		} else {
 			(cantidadLadrillos / 50).roundUp()
 		}*/
-	}
-	
-	method divisor() {
-		return if(cantidadLadrillos <= 1000) 100 else 50
-	}
-	
+	}	
 	
 	method peso() {
 		return self.pesoLadrillos() + self.pesoRefuerzos()
@@ -83,6 +77,7 @@ object paqueteDeLadrillos {
 	
 	method seCarga() {
 		cantidadLadrillos = (cantidadLadrillos - 12).max(0)
+		//self.cantidadDeLadrillos((cantidadLadrillos - 12).max(0))
 	}
 }
 
