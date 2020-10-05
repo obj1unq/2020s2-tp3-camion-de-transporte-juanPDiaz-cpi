@@ -22,8 +22,8 @@ object bumblebee {
 
 object paqueteDeLadrillos {
 	var property cantidadLadrillos = 0
-	//var property cantidadRefuerzos = 0
-	
+//	var property cantidadRefuerzos = 0
+
 //	method cantidadLadrillos(cantidad){
 //		cantidadLadrillos = cantidad
 //		
@@ -74,7 +74,7 @@ object paqueteDeLadrillos {
 	
 	method seCarga() {
 		cantidadLadrillos = (cantidadLadrillos - 12).max(0)
-		//self.cantidadDeLadrillos((cantidadLadrillos - 12).max(0))
+//		self.cantidadLadrillos((cantidadLadrillos - 12).max(0))
 	}
 }
 
