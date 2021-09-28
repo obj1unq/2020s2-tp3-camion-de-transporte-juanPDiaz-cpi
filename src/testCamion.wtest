@@ -1,0 +1,91 @@
+ import camion.*
+ import cosas.*
+ import objetosDePrueba.*
+ 
+describe "tests del camión" {
+	
+	test "carga exitosa" {
+		camion.cargar(knightRider)
+		assert.that(camion.posee(knightRider))
+	}
+	
+	test "carga fallida" {
+		cosaDePesoVariable.peso(1600)
+		assert.throwsException({ camion.cargar(cosaDePesoVariable) })
+	}
+	
+	test "descarga exitosa" {
+		camion.cargar(knightRider)
+		camion.descargar(knightRider)
+		assert.notThat(camion.posee(knightRider))
+	}
+	
+	test "descarga fallida" {
+		assert.throwsException({ camion.descargar(knightRider) })
+	}
+	
+	test "peso total" {
+		camion.cargar(knightRider)
+		camion.cargar(bumblebee)
+		assert.equals(2300, camion.pesoTotal())
+	}
+	
+	test "exceso de peso" {
+		camion.cargar(cosaDePesoVariable)
+		cosaDePesoVariable.peso(1600)
+		assert.that(camion.excedidoDePeso())
+	}
+	
+	test "objetos peligrosos" {
+		camion.cargar(knightRider)
+		camion.cargar(bumblebee)
+		assert.equals([bumblebee], camion.objetosPeligrosos(12))
+	}
+	
+	test "objetos más peligrosos que cierta cosa" {
+		camion.cargar(bumblebee)
+		assert.equals([bumblebee], camion.objetosMasPeligrososQue(knightRider))
+	}
+	
+	test "puede circular en ruta" {
+		camion.cargar(knightRider)
+		assert.that(camion.puedeCircularEnRuta(12))
+		assert.notThat(camion.puedeCircularEnRuta(5))
+	}
+	
+	test "algo que pesa entre 100 y 1000" {
+		camion.cargar(bumblebee)
+		
+		assert.that(camion.tieneAlgoQuePesaEntre(700, 900))
+		assert.notThat(camion.tieneAlgoQuePesaEntre(3000, 3100))
+	}
+	
+	test "cosa más pesada" {
+		camion.cargar(bumblebee)
+		camion.cargar(knightRider)
+		
+		assert.equals(camion.cosaMasPesada(), bumblebee)
+	}
+	
+	test "total bultos" {
+		camion.cargar(bumblebee)
+		camion.cargar(knightRider)
+		
+		assert.equals(3, camion.totalBultos())
+	}
+	
+	test "total pesos" {
+		camion.cargar(bumblebee)
+		camion.cargar(knightRider)
+		
+		assert.equals([800, 500], camion.pesos())
+	}
+}
+
+
+
+
+
+
+
+
